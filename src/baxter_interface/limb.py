@@ -439,8 +439,8 @@ class Limb(object):
 
         self.set_joint_positions(filtered_cmd())
         baxter_dataflow.wait_for(
-            test=lambda: callable(test) and test() == True or \
-                         (all(diff() < threshold for diff in diffs)),
+            test=lambda: callable(test) and test() is True or
+                                (all(diff() < threshold for diff in diffs)),
             timeout=timeout,
             timeout_msg=("%s limb failed to reach commanded joint positions" %
                          (self.name.capitalize(),)),
