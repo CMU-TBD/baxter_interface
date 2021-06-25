@@ -100,15 +100,15 @@ class Limb(object):
             latch=True,
             queue_size=10)
 
-        _cartesian_state_sub = rospy.Subscriber(
+        self._cartesian_state_sub = rospy.Subscriber(
             ns + 'endpoint_state',
             EndpointState,
             self._on_endpoint_states,
             queue_size=1,
             tcp_nodelay=True)
 
-        joint_state_topic = 'robot/joint_states'
-        _joint_state_sub = rospy.Subscriber(
+        joint_state_topic = '/robot/joint_states'
+        self._joint_state_sub = rospy.Subscriber(
             joint_state_topic,
             JointState,
             self._on_joint_states,
